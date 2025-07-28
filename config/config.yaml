@@ -1,0 +1,52 @@
+app:
+  name: "ML Pipeline System"
+  version: "1.0.0"
+  environment: "development"
+
+data:
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  features_path: "data/features"
+  validation_split: 0.2
+  test_split: 0.2
+  random_state: 42
+
+model:
+  model_path: "models"
+  model_name: "ml_model"
+  model_version: "latest"
+  save_format: "pickle"
+
+training:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  early_stopping_patience: 10
+  validation_frequency: 5
+
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1", "roc_auc"]
+  cross_validation_folds: 5
+  threshold: 0.5
+
+deployment:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 30
+
+monitoring:
+  log_level: "INFO"
+  metrics_port: 8001
+  drift_threshold: 0.1
+  performance_window: 1000
+
+mlflow:
+  tracking_uri: "http://localhost:5000"
+  experiment_name: "ml_pipeline_experiments"
+  artifact_location: "mlruns"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/ml_pipeline.log" 
